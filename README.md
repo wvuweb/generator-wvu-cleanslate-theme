@@ -7,5 +7,14 @@ The purpose of this generator is to quickly boostrap CleanSlate Themes for West 
 ###Installation
 
 ```bash
+npm install -g yo
 npm install generator-wvu-cleanslate-theme
 ```
+
+###Usage
+
+```bash
+yo wvu-cleanslate-theme
+```
+
+win.
