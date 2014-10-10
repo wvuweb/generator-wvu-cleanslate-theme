@@ -1,0 +1,19 @@
+{
+  "name": "<%= _.slugify(themeName) %>",
+  "version": "<%= themeVersion %>",
+  "authors": [
+    "<%= authorName %> <<%= authorEmail %>>"
+  ],
+  "license": "proprietary",
+  "private" : true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "wvu-patterns-starter-kit": "latest"
+  }
+}

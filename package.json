@@ -1,0 +1,22 @@
+{
+  "name": "generator-wvu-cleanslate-theme",
+  "version": "0.0.1",
+  "description": "WVU CleanSlate Theme Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "wvu",
+    "cleanslate",
+    "west virginia university"
+  ],
+  "author": "Steven Spriggs <steven.spriggs@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^0.5.1",
+    "yeoman-generator": "^0.17.7",
+    "yosay": "^1.0.0"
+  }
+}

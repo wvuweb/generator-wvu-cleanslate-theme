@@ -1,0 +1,16 @@
+{
+  "name": "<%= _.slugify(themeName) %>",
+  "version": "<%= themeVersion %>",
+  "description": "<%= themeDescription %>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "<%= authorName %> <<%= authorEmail %>>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-sass": "^1.0.0"
+  }
+}

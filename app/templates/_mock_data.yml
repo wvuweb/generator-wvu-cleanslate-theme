@@ -1,0 +1,12 @@
+site_name: "<%= themeName %>"
+
+shared_themes:
+  layouts__browser-update-org--v1: "code"
+
+editable_region:
+  main: |
+    <h1>Yo Cleanslate Success!</h1>
+    <h2><%= themeName %> has generated!</h2>
+    <p>Now have fun customizing your theme</p>
+  sidebar: |
+    <p><%%= Faker::Lorem.paragraph(5) %></p>
