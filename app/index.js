@@ -5,10 +5,11 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
 module.exports = yeoman.generators.Base.extend({
-  constructor: function () {
-      yeoman.generators.Base.apply(this, arguments);
-
-      this.pkg = require('../package.json');
+  constructor: function (options) {
+    yeoman.generators.Base.apply(this, arguments);
+    
+    // require package.json
+    this.pkg = require('../package.json');
   },
   
   promptTask: function () {
