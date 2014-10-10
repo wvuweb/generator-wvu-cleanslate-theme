@@ -1,5 +1,7 @@
 #WVU CleanSlate Theme Generator
 
+[![Build Status](https://travis-ci.org/wvuweb/generator-wvu-cleanslate-theme.svg?branch=master)](https://travis-ci.org/wvuweb/generator-wvu-cleanslate-theme)
+
 The purpose of this generator is to quickly boostrap CleanSlate Themes for West Virginia University web developers.
 
 **NPM** [https://www.npmjs.org/package/generator-wvu-cleanslate-theme](https://www.npmjs.org/package/generator-wvu-cleanslate-theme)
