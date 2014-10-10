@@ -6,8 +6,14 @@ The purpose of this generator is to quickly boostrap CleanSlate Themes for West 
 
 ###Installation
 
+First install Yeoman if you don't already have it:
+
 ```bash
 npm install -g yo
+```
+Then install the generator:
+
+```bash
 npm install generator-wvu-cleanslate-theme
 ```
 
