@@ -4,23 +4,42 @@ The purpose of this generator is to quickly boostrap CleanSlate Themes for West 
 
 **NPM** [https://www.npmjs.org/package/generator-wvu-cleanslate-theme](https://www.npmjs.org/package/generator-wvu-cleanslate-theme)
 
+
 ###Installation
 
-First install Yeoman if you don't already have it:
+* Visit [NodeJS](http://nodejs.org/) and install it if you don't already have it:
 
-```bash
-npm install -g yo
-```
-Then install the generator:
+* Install [GulpJS](http://gulpjs.com/) if you don't already have it:
 
-```bash
-npm install generator-wvu-cleanslate-theme
-```
+  ```bash
+  npm install -g gulp
+  ```
+
+* Install Yeoman if you don't already have it:
+
+  ```bash
+  npm install -g yo
+  ```
+
+* Then install the generator:
+
+  ```bash
+  npm install generator-wvu-cleanslate-theme
+  ```
 
 ###Usage
+
+Make a new directory in your `cleanslate_themes/` folder, and `cd` into it
+
+```bash
+mkdir my-new-theme && cd $_
+```
+
+Run `yo wvu-cleanslate-theme` and win.
 
 ```bash
 yo wvu-cleanslate-theme
 ```
 
-win.
+If you have [hammer](https://github.com/wvuweb/hammer) installed your base theme will now be ready to view and work on.
+
