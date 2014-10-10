@@ -1,4 +1,6 @@
 site_name: "<%= themeName %>"
+page:
+  name: "<%%= Faker::Company.catch_phrase %>"
 
 shared_themes:
   layouts__browser-update-org--v1: "code"
