@@ -26,7 +26,7 @@ The purpose of this generator is to quickly boostrap CleanSlate Themes for West 
 * Then install the generator:
 
   ```bash
-  npm install generator-wvu-cleanslate-theme
+  npm install -g generator-wvu-cleanslate-theme
   ```
 
 ###Usage
