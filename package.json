@@ -1,6 +1,6 @@
 {
   "name": "generator-wvu-cleanslate-theme",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "WVU CleanSlate Theme Generator",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,8 @@
   "dependencies": {
     "chalk": "^0.5.1",
     "yeoman-generator": "^0.17.7",
-    "yosay": "^1.0.0"
+    "yosay": "^1.0.0",
+    "underscore.string": "^2.3.1"
   },
   "devDependencies": {
     "mocha": "^1.21.4"

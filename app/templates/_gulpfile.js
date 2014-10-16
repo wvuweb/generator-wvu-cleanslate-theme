@@ -2,8 +2,26 @@
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
+    <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %>
+    <% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
     prefix = require('gulp-autoprefixer');
 
+<% if (reload == 'browsersync') { %>
+gulp.task('browser-sync', function() {
+  browserSync.init(null, {
+    proxy: {
+      host: "localhost",
+      port: 2000
+    }
+  });
+});
+<% } %>
+
+<% if (reload == 'livereload') { %>
+gulp.task('livereload', function(){
+  livereload.listen({auto: true});
+})
+<% } %>
 
 gulp.task('cleanslate:copy:views', function(){
   gulp.src([
@@ -28,8 +46,20 @@ gulp.task('sass', function() {
       outputStyle: 'expanded'
     }))
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
-    .pipe(gulp.dest('stylesheets/'));
+    .pipe(gulp.dest('stylesheets/'))
+    <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %>
+    <% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
 });
 
+gulp.task('watch', function () {
+  gulp.watch(['**/*.html','**/*.yml'],['reload']);
+  gulp.watch(['scss/*.scss','scss/**/*.scss'],['sass']);
+  gulp.watch(['javascript/**/*.js'],['javascript']);
+});
 
-gulp.task('default', ['sass']);
+gulp.task('default', [
+  <% if (reload == 'livereload') { %>'livereload',<% } %>
+  'sass',
+  'watch'
+  <% if (reload == 'browsersync') { %>,'browser-sync'<% } %>
+]);

@@ -1,3 +1,18 @@
+<% if (reload == 'livereload') { %>
+livereload: true
+<% } %>
+<% if (reload == 'browsersync') { %>
+browsersync: true
+browsersync-data: |
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  script.setAttribute("defer", "defer");
+  script.type = 'text/javascript';
+  var src= '//HOST:3000/browser-sync/browser-sync-client.1.5.8.js';
+  script.src = src.replace(/HOST/g, location.hostname).replace(/PORT/g, location.port);
+  head.appendChild(script);
+<% } %>
+
 site_name: "<%= themeName %>"
 page:
   name: "<%%= Faker::Company.catch_phrase %>"
