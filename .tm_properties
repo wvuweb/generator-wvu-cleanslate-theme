@@ -1,3 +1,4 @@
 include="{$include,.git}"
 include="{$include,.gitkeep}"
 include="{$include,.travis.yml}"
+include="{$include,.editorconfig}"
