@@ -2,7 +2,7 @@
   "name": "<%= _.slugify(themeName) %>",
   "version": "<%= themeVersion %>",
   "description": "<%= themeDescription %>",
-  "homepage": "<%= themeDomain %>",
+  "homepage": "http://<%= themeDomain %>",
   "main": "index.js",
   "repository" : { 
     "type" : "git", 

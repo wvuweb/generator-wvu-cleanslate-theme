@@ -8,11 +8,8 @@ var gulp = require('gulp'),
 
 <% if (reload == 'browsersync') { %>
 gulp.task('browser-sync', function() {
-  browserSync.init(null, {
-    proxy: {
-      host: "localhost",
-      port: 2000
-    }
+  browserSync({
+    proxy: "localhost:2000"
   });
 });
 <% } %>
