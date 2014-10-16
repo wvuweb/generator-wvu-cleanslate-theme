@@ -3,6 +3,7 @@
 var join = require('path').join;
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var _s = require('underscore.string');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function (options) {
@@ -27,12 +28,21 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'theme_name',
       message: 'What would you like to name your theme?',
-      default : this.appname // Defaults to the project folder
+      validate: function(input){
+        if (input == _s.slugify(input) && input !== 'cleanslate-themes') return true;
+        if (input == 'cleanslate-themes'){
+          return chalk.red(
+            'Warning: You might be trying to install a theme in the /cleanslate_theme/ root directory.'
+          );
+        }
+        return "You need to provide a valid theme name";
+      },
+      default: _s.slugify(this.appname) // Defaults to the project folder
     }, {
       type: 'input',
       name: 'theme_description',
       message: 'In a few words describe your theme?',
-      default : this.appname + ' Clean Slate Theme'
+      default : _s.slugify(this.appname) + ' CleanSlate Theme'
     }, {
       type: 'input',
       name: 'theme_version',
@@ -41,23 +51,66 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       type: 'input',
       name: 'theme_domain',
-      message: 'What is the theme\'s domain name?',
-      default: null
+      message: 'What will be the theme\'s domain name?',
+      default: _s.slugify(this.appname) + '.wvu.edu'
     }, {
       type: 'input',
       name: 'theme_repository',
       message: 'What is the theme\'s git repository url?',
-      default: null
+      default: 'http://stash.development.wvu.edu/scm/cst/'+_s.slugify(this.appname)+'.git'
     }, {
       type: 'input',
       name: 'author_name',
-      message: 'What is your name?',
-      default: null 
+      message: 'What is your full name?',
+      validate: function(input){
+        if (input.length !== 0) return true;
+        return "You need to provide a valid full name";
+      }
     }, {
       type: 'input',
       name: 'author_email',
-      message: 'What is your email?',
-      default: null
+      message: 'What is your WVU email?',
+      validate: function(input){
+        if (/\S+@mail.wvu.edu/.test(input)) return true;
+        return "You need to provide a valid WVU email address 'user.name@mail.wvu.edu'"
+      }
+    }, {
+      type: 'list',
+      name: 'gulp',
+      message: 'Do you plan on using Gulp?',
+      choices: [
+        {
+          value: false,
+          name: 'No'
+        },
+        {
+          value: true,
+          name: 'Yes'
+        }
+      ],
+      default: 1
+    }, {
+      when: function (answer) {
+        return answer.gulp === true;
+      },
+      type: 'list',
+      name: 'reload',
+      message: 'Preinstall BrowserSync or LiveReload?',
+      choices: [
+        {
+          value: 'browsersync',
+          name: 'BrowserSync'
+        },
+        {
+          value: 'livereload',
+          name: 'LiveReload'
+        },
+        {
+          value: 'none',
+          name: 'Neither'
+        }
+      ],
+      default: 0
     }, {
       type: 'confirm',
       name: 'ready_set_go',
