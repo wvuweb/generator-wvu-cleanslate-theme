@@ -2,7 +2,12 @@
   "name": "<%= _.slugify(themeName) %>",
   "version": "<%= themeVersion %>",
   "description": "<%= themeDescription %>",
+  "homepage": "<%= themeDomain %>",
   "main": "index.js",
+  "repository" : { 
+    "type" : "git", 
+    "url" : "<%= themeGitRepo %>"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
