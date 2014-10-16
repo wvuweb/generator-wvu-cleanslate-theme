@@ -128,7 +128,12 @@ module.exports = yeoman.generators.Base.extend({
       this.themeGitRepo = answers.theme_repository;
       this.authorName = answers.author_name;
       this.authorEmail = answers.author_email;
-      
+      this.gulp = answers.gulp;
+      if (answers.gulp === true) {
+        this.reload = answers.reload;
+      } else {
+        this.reload = 'none';
+      }
       done();
     }.bind(this));
   },
