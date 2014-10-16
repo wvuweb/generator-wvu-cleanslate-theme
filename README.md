@@ -14,19 +14,25 @@ The purpose of this generator is to quickly boostrap CleanSlate Themes for West 
 * Install [GulpJS](http://gulpjs.com/) if you don't already have it:
 
   ```bash
-  npm install -g gulp
+  sudo npm install -g gulp
+  ```
+  
+* Install [BowerJS](http://bower.io/) if you don't already have it:
+
+  ```bash
+  sudo npm install -g bower
   ```
 
 * Install Yeoman if you don't already have it:
 
   ```bash
-  npm install -g yo
+  sudo npm install -g yo
   ```
 
 * Then install the generator:
 
   ```bash
-  npm install -g generator-wvu-cleanslate-theme
+  sudo npm install -g generator-wvu-cleanslate-theme
   ```
 
 ###Usage
