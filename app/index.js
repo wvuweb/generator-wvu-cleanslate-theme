@@ -75,6 +75,45 @@ module.exports = yeoman.generators.Base.extend({
         return "You need to provide a valid WVU email address 'user.name@mail.wvu.edu'"
       }
     }, {
+      type: 'checkbox',
+      name: 'features',
+      message: 'What more would you like?',
+      choices: [{
+        name: 'HTML5-Shiv',
+        value: 'includeHTML5Shiv',
+        checked: true
+      },{
+        name: 'Modernizr',
+        value: 'includeModernizr',
+        checked: false
+      },{
+        name: 'RespondJS',
+        value: 'includeRespondJS',
+        checked: true
+      },{
+        name: 'jQuery',
+        value: 'includeJquery',
+        checked: false
+      }]
+    }, {
+      when: function (answer) {
+        return answer && answer.features && answer.features.indexOf('includeJquery') !== -1;
+      },
+      type: 'list',
+      name: 'jqueryVersion',
+      message: 'Which Version of jQuery?',
+      choices: [
+        {
+          value: '1.11.1',
+          name: '1.11.1 - Supports old Internet Explorer'
+        },
+        {
+          value: '2.1.1',
+          name: '2.1.1 - No support for old IE, lighter weight package.'
+        }
+      ],
+      default: 0
+    }, {
       type: 'list',
       name: 'gulp',
       message: 'Do you plan on using Gulp?',
@@ -121,6 +160,13 @@ module.exports = yeoman.generators.Base.extend({
     }];
     
     this.prompt(prompts, function(answers){
+      
+      var features = answers.features;
+      
+      function hasFeature(feat) {
+        return features && features.indexOf(feat) !== -1;
+      }
+      
       this.themeName = answers.theme_name;
       this.themeDescription = answers.theme_description;
       this.themeVersion = answers.theme_version;
@@ -128,6 +174,11 @@ module.exports = yeoman.generators.Base.extend({
       this.themeGitRepo = answers.theme_repository;
       this.authorName = answers.author_name;
       this.authorEmail = answers.author_email;
+      this.jquery = hasFeature('includeJquery');
+      this.jqueryVersion = answers.jqueryVersion;
+      this.modernizr = hasFeature('includeModernizr');
+      this.html5shiv = hasFeature('includeHTML5Shiv');
+      this.respondjs = hasFeature('includeRespondJS');
       this.gulp = answers.gulp;
       if (answers.gulp === true) {
         this.reload = answers.reload;
@@ -173,8 +224,8 @@ module.exports = yeoman.generators.Base.extend({
   },
   
   theme_files: function(){
-    this.copy('_styles.scss','scss/styles.scss')
-    this.copy('_default.html','views/layouts/default.html');
+    this.copy('_styles.scss','scss/styles.scss');
+    this.template('_default.html','views/layouts/default.html');
     this.copy('_frontpage.html','views/frontpage.html');
   },
   
