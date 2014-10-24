@@ -8,7 +8,6 @@ var _s = require('underscore.string');
 module.exports = yeoman.generators.Base.extend({
   constructor: function (options) {
     yeoman.generators.Base.apply(this, arguments);
-    
     // require package.json
     this.pkg = require('../package.json');
   },
@@ -222,7 +221,7 @@ module.exports = yeoman.generators.Base.extend({
     this.mkdir('views');
     this.mkdir('views/layouts');
   },
-  
+
   theme_files: function(){
     this.copy('_styles.scss','scss/styles.scss');
     this.template('_default.html','views/layouts/default.html');
@@ -236,14 +235,10 @@ module.exports = yeoman.generators.Base.extend({
           skipMessage: this.options['skip-install-message'],
           skipInstall: this.options['skip-install'],
           callback: function () {
-            this.spawnCommand('gulp', ['cleanslate:copy:views','sass']);
+            this.spawnCommand('gulp', ['cleanslate:copy:views','cleanslate:beautify:views','sass']);
           }.bind(this) // bind the callback to the parent scope
         });
       }
     });
-  },
-  
-
-  
-  
+  }
 });

@@ -4,7 +4,10 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %>
     <% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
-    prefix = require('gulp-autoprefixer');
+    prefix = require('gulp-autoprefixer'),
+    beautify = require('js-beautify').js_beautify,
+    beautify_html = require('js-beautify').html,
+    fs = require('fs');
 
 <% if (reload == 'browsersync') { %>
 gulp.task('browser-sync', function() {
@@ -30,6 +33,31 @@ gulp.task('cleanslate:copy:views', function(){
     './bower_components/wvu-patterns-footer-links/src/cleanslate_view/_wvu-footer__links.html',
   ])
   .pipe(gulp.dest('views/layouts/'));
+});
+
+gulp.task('cleanslate:beautify:views', function(){
+  
+  var config = {
+    html: {
+      indent_inner_html: false,
+      indent_size: 2,
+      indent_char: " ",
+      brace_style: "collapse",
+      indent_scripts: "normal",
+      wrap_line_length: 500,
+      preserve_newlines: true,
+      max_preserve_newlines: 1,
+      unformatted: [],
+      end_with_newline: true
+    }
+  };
+
+  gulp.src([
+    './views/**/*.html'
+  ], {base: './'})
+  .pipe(beautify(config))
+  .pipe(gulp.dest('./'));
+  
 });
     
 gulp.task('sass', function() {
