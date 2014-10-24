@@ -5,9 +5,7 @@ var gulp = require('gulp'),
     <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %>
     <% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
     prefix = require('gulp-autoprefixer'),
-    beautify = require('js-beautify').js_beautify,
-    beautify_html = require('js-beautify').html,
-    fs = require('fs');
+    beautify = require('gulp-js-beaut');
 
 <% if (reload == 'browsersync') { %>
 gulp.task('browser-sync', function() {
