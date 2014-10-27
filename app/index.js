@@ -235,7 +235,7 @@ module.exports = yeoman.generators.Base.extend({
           skipMessage: this.options['skip-install-message'],
           skipInstall: this.options['skip-install'],
           callback: function () {
-            this.spawnCommand('gulp', ['cleanslate:copy:views','cleanslate:beautify:views','sass']);
+            this.spawnCommand('gulp', ['cleanslate:copy:views','cleanslate:beautify:views','cleanslate:beautify:gulpfile','sass']);
           }.bind(this) // bind the callback to the parent scope
         });
       }
