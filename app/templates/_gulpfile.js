@@ -27,22 +27,22 @@ gulp.task('livereload', function(){
 // CleanSlate - Copy Views from bower_components to views/
 gulp.task('cleanslate:copy:views', function(){
   gulp.src([
-    './bower_components/wvu-patterns-masthead/src/cleanslate_view/_wvu-masthead.html',
-    './bower_components/wvu-patterns-masthead-logo/src/cleanslate_view/_wvu-masthead__logo.html',
-    './bower_components/wvu-patterns-masthead-links/src/cleanslate_view/_wvu-masthead__links.html',
-    './bower_components/wvu-patterns-footer/src/cleanslate_view/_wvu-footer.html',
-    './bower_components/wvu-patterns-footer-credits/src/cleanslate_view/_wvu-footer__credits.html',
-    './bower_components/wvu-patterns-footer-links/src/cleanslate_view/_wvu-footer__links.html',
+    './bower_components/wvu-patterns-masthead/src/cleanslate/_wvu-masthead.html',
+    './bower_components/wvu-patterns-masthead-logo/src/cleanslate/_wvu-masthead__logo.html',
+    './bower_components/wvu-patterns-masthead-links/src/cleanslate/_wvu-masthead__links.html',
+    './bower_components/wvu-patterns-footer/src/cleanslate/_wvu-footer.html',
+    './bower_components/wvu-patterns-footer-credits/src/cleanslate/_wvu-footer__credits.html',
+    './bower_components/wvu-patterns-footer-links/src/cleanslate/_wvu-footer__links.html',
   ])
-  .pipe(gulp.dest('views/layouts/'));
+  .pipe(gulp.dest('./views/layouts/'));
 });
 
 // CleanSlate - Beautify View files
 // For more information: https://github.com/zeroedin/gulp-js-beaut
-gulp.task('cleanslate:beautify:views', function(){ 
+gulp.task('cleanslate:beautify:views', function(){
   var config = {
     html: {
-      indent_inner_html: false,
+      indent_inner_html: true,
       indent_size: 2,
       indent_char: " ",
       brace_style: "collapse",
@@ -50,7 +50,6 @@ gulp.task('cleanslate:beautify:views', function(){
       wrap_line_length: 500,
       preserve_newlines: true,
       max_preserve_newlines: 1,
-      unformatted: ['---'],
       end_with_newline: true
     }
   };
@@ -64,9 +63,9 @@ gulp.task('cleanslate:beautify:views', function(){
 
 // CleanSlate - Beautify Gulpfile.js
 // For more information: https://github.com/zeroedin/gulp-js-beaut
-gulp.task('cleanslate:beautify:gulpfile', function(){ 
+gulp.task('cleanslate:beautify:gulpfile', function(){
   var config = {
-    js: { 
+    js: {
       indent_size: 2,
       indent_char: " ",
       indent_level: 0,
@@ -101,12 +100,12 @@ gulp.task('sass', function() {
     'scss/**/*.scss'
     ])
     .pipe(sass({
-      includePaths: ['scss'], 
-      sourcemap: true, 
+      includePaths: ['scss'],
+      sourcemap: true,
       outputStyle: 'expanded'
     }))
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
-    .pipe(gulp.dest('stylesheets/'))
+    .pipe(gulp.dest('./stylesheets/'))
     <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %>
     <% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
 });
