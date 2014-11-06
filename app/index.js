@@ -189,47 +189,65 @@ module.exports = yeoman.generators.Base.extend({
   },
   
   git: function() {
+    var done = this.async();
     this.template('gitignore', '.gitignore');
     this.copy('gitattributes','.gitattributes');
+    done();
   },
   
   gulp: function(){
+    var done = this.async();
     this.copy('_gulpfile.js','gulpfile.js');
+    done();
   },
   
   npm: function(){
+    var done = this.async();
     this.template('_package.json','package.json');
+    done();
   },
   
   bower: function(){
+    var done = this.async();
     this.template('_bower.json','bower.json');
+    done();
   },
 
   theme_readme: function(){
+    var done = this.async();
     this.template('_README.md','README.md');
+    done();
   },
   
   theme_config: function(){
+    var done = this.async();
     this.template('_config.yml','config.yml');
     this.template('_mock_data.yml','mock_data.yml');
+    done();
   },
   
   theme_directories: function(){
+    var done = this.async();
     this.mkdir('javascripts');
     this.mkdir('stylesheets');
     this.mkdir('scss');
     this.mkdir('views');
     this.mkdir('views/layouts');
+    done();
   },
 
   theme_files: function(){
+    var done = this.async();
     this.copy('_styles.scss','scss/styles.scss');
     this.template('_default.html','views/layouts/default.html');
     this.copy('_frontpage.html','views/frontpage.html');
+    done();
   },
+  
   
   install: function () {
     this.on('end', function () {
+
       if (!this.options['skip-install']) {
         this.installDependencies({
           skipMessage: this.options['skip-install-message'],
