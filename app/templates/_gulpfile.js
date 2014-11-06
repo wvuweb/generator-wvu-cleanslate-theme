@@ -5,7 +5,10 @@ var gulp = require('gulp'),
     <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %>
     <% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
     prefix = require('gulp-autoprefixer'),
-    beautify = require('gulp-js-beaut');
+    beautify = require('gulp-js-beaut'),
+    frontMatter = require('gulp-front-matter'),
+    tap = require('gulp-tap'),
+    YAML = require('yamljs');
 
 <% if (reload == 'browsersync') { %>
 // BrowserSync Loading Task
@@ -39,7 +42,7 @@ gulp.task('cleanslate:copy:views', function(){
 
 // CleanSlate - Beautify View files
 // For more information: https://github.com/zeroedin/gulp-js-beaut
-gulp.task('cleanslate:beautify:views', function(){
+gulp.task('cleanslate:beautify:views', function() {
   var config = {
     html: {
       indent_inner_html: true,
@@ -53,12 +56,31 @@ gulp.task('cleanslate:beautify:views', function(){
       end_with_newline: true
     }
   };
-
   gulp.src([
-    './views/**/*.html'
-  ], {base: './'})
-  .pipe(beautify(config))
-  .pipe(gulp.dest('./'));
+      './views/**/*.html'
+    ], {
+      base: './'
+    }).pipe(frontMatter({
+      property: 'frontMatter',
+      remove: true
+    }))
+    .pipe(beautify(config))
+    .pipe(tap(function(file, t){
+      if (Object.keys(file['frontMatter']).length > 0){
+        var yaml = YAML.stringify(file['frontMatter'], 2)
+        var fm = [
+          '---',
+          yaml,
+          '---',
+          '',
+          ''
+        ].join('\n');
+        file.contents = Buffer.concat([
+          new Buffer(fm), file.contents
+        ]);
+      }
+    }))
+    .pipe(gulp.dest('./'));
 });
 
 // CleanSlate - Beautify Gulpfile.js

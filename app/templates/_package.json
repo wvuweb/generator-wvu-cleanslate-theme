@@ -4,8 +4,8 @@
   "description": "<%= themeDescription %>",
   "homepage": "http://<%= themeDomain %>",
   "main": "index.js",
-  "repository" : { 
-    "type" : "git", 
+  "repository" : {
+    "type" : "git",
     "url" : "<%= themeGitRepo %>"
   },
   "scripts": {
@@ -18,7 +18,10 @@
     <% if (reload == 'browsersync') { %>"browser-sync": "1.6.0",<% } %>
     <% if (reload == 'livereload') { %>"gulp-livereload": "2.1.0",<% } %>
     "gulp-autoprefixer": "^1.0.1",
+    "gulp-front-matter": "^1.0.0",
     "gulp-js-beaut": "0.0.1",
-    "gulp-sass": "^1.0.0"
+    "gulp-sass": "^1.0.0",
+    "gulp-tap": "^0.1.3",
+    "yamljs": "^0.2.1"
   }
 }
