@@ -13,7 +13,10 @@ browsersync-data: |
   head.appendChild(script);
 <% } %>
 
-site_name: "<%= themeName %>"
+site:
+  name: "<%= themeName %>"
+  domain: "<%= themeDomain %>"
+  
 page:
   name: "<%%= Faker::Company.catch_phrase %>"
 
