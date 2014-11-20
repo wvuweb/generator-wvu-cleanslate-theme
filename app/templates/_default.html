@@ -32,6 +32,11 @@
     </div> <!-- /.container -->
     
     <r:partial name="wvu-footer" />
+    
+    <r:comment><!-- What is the <r:yield name="page_js" /> and <r:content /> block? http://goo.gl/03vEf7 --></r:comment>
+    <r:yield name="page_js">
+      <r:content />
+    </r:yield>
 
     <r:partial name="layouts/browser-update-org--v1" theme="Code" />
     
