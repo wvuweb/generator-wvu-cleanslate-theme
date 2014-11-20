@@ -1,6 +1,6 @@
 {
   "name": "generator-wvu-cleanslate-theme",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "WVU CleanSlate Theme Generator",
   "main": "index.js",
   "scripts": {
