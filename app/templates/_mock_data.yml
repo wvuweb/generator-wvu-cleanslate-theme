@@ -1,17 +1,12 @@
-<% if (reload == 'livereload') { %>
-livereload: true
-<% } %>
-<% if (reload == 'browsersync') { %>
-browsersync: true
+<% if (reload == 'livereload') { %>livereload: true<% } %><% if (reload == 'browsersync') { %>browsersync: true
 browsersync-data: |
   var head = document.getElementsByTagName('head')[0];
   var script = document.createElement('script');
   script.setAttribute("defer", "defer");
   script.type = 'text/javascript';
-  var src= '//HOST:3000/browser-sync/browser-sync-client.1.6.0.js';
+  var src= '//HOST:3000/browser-sync/browser-sync-client.1.6.1.js';
   script.src = src.replace(/HOST/g, location.hostname).replace(/PORT/g, location.port);
-  head.appendChild(script);
-<% } %>
+  head.appendChild(script);<% } %>
 
 site:
   name: "<%= themeName %>"
