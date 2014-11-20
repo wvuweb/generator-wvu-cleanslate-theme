@@ -8,6 +8,8 @@ var _s = require('underscore.string');
 module.exports = yeoman.generators.Base.extend({
   constructor: function (options) {
     yeoman.generators.Base.apply(this, arguments);
+    
+    this.option('test');
     // require package.json
     this.pkg = require('../package.json');
   },
@@ -157,35 +159,61 @@ module.exports = yeoman.generators.Base.extend({
         chalk.red('Press return when you are ready'),
       default: true
     }];
-    
-    this.prompt(prompts, function(answers){
-      
-      var features = answers.features;
-      
-      function hasFeature(feat) {
-        return features && features.indexOf(feat) !== -1;
-      }
-      
-      this.themeName = answers.theme_name;
-      this.themeDescription = answers.theme_description;
-      this.themeVersion = answers.theme_version;
-      this.themeDomain = answers.theme_domain;
-      this.themeGitRepo = answers.theme_repository;
-      this.authorName = answers.author_name;
-      this.authorEmail = answers.author_email;
-      this.jquery = hasFeature('includeJquery');
-      this.jqueryVersion = answers.jqueryVersion;
-      this.modernizr = hasFeature('includeModernizr');
-      this.html5shiv = hasFeature('includeHTML5Shiv');
-      this.respondjs = hasFeature('includeRespondJS');
-      this.gulp = answers.gulp;
-      if (answers.gulp === true) {
-        this.reload = answers.reload;
-      } else {
-        this.reload = 'none';
-      }
-      done();
-    }.bind(this));
+
+
+    if (this.options.test == true) {
+      this.prompt([], function(){
+        this.themeName = "test";
+        this.themeDescription = "test theme";
+        this.themeVersion = "0.0.1";
+        this.themeDomain = "test.wvu.edu";
+        this.themeGitRepo = "http://stash.development.wvu.edu/scm/cst/test.git";
+        this.authorName = "test";
+        this.authorEmail = "test@mail.wvu.edu";
+        this.jquery = true;
+        this.jqueryVersion = "1.11.1";
+        this.modernizr = true;
+        this.html5shiv = true;
+        this.respondjs = true;
+        this.gulp = true;
+        this.reload = "browsersync";
+        this.autoopen = true;
+        done();
+      }.bind(this));
+    } else {
+      this.prompt(prompts, function(answers){
+
+        var features = answers.features;
+
+        function hasFeature(feat) {
+          return features && features.indexOf(feat) !== -1;
+        }
+
+        this.themeName = answers.theme_name;
+        this.themeDescription = answers.theme_description;
+        this.themeVersion = answers.theme_version;
+        this.themeDomain = answers.theme_domain;
+        this.themeGitRepo = answers.theme_repository;
+        this.authorName = answers.author_name;
+        this.authorEmail = answers.author_email;
+        this.jquery = hasFeature('includeJquery');
+        this.jqueryVersion = answers.jqueryVersion;
+        this.modernizr = hasFeature('includeModernizr');
+        this.html5shiv = hasFeature('includeHTML5Shiv');
+        this.respondjs = hasFeature('includeRespondJS');
+        this.gulp = answers.gulp;
+        if (answers.gulp === true) {
+          this.reload = answers.reload;
+        } else {
+          this.reload = 'none';
+        }
+        if (this.reload == 'BrowserSync') {
+          this.autoopen = answers.autoopen;
+        }
+
+        done();
+      }.bind(this)); 
+    }
   },
   
   git: function() {
