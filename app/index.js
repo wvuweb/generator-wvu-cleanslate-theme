@@ -177,7 +177,6 @@ module.exports = yeoman.generators.Base.extend({
         this.respondjs = true;
         this.gulp = true;
         this.reload = "browsersync";
-        this.autoopen = true;
         done();
       }.bind(this));
     } else {
@@ -207,9 +206,6 @@ module.exports = yeoman.generators.Base.extend({
         } else {
           this.reload = 'none';
         }
-        if (this.reload == 'BrowserSync') {
-          this.autoopen = answers.autoopen;
-        }
 
         done();
       }.bind(this)); 
@@ -225,7 +221,7 @@ module.exports = yeoman.generators.Base.extend({
   
   gulp: function(){
     var done = this.async();
-    this.copy('_gulpfile.js','gulpfile.js');
+    this.template('_gulpfile.js','gulpfile.js');
     done();
   },
   

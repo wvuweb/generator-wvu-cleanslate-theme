@@ -2,8 +2,7 @@
 
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %>
-    <% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
+    <% if (reload == 'browsersync') { %>browserSync = require('browser-sync'),<% } %><% if (reload == 'livereload') { %>livereload = require('gulp-livereload'),<% } %>
     prefix = require('gulp-autoprefixer'),
     beautify = require('gulp-js-beaut'),
     frontMatter = require('gulp-front-matter'),
@@ -128,15 +127,13 @@ gulp.task('sass', function() {
     }))
     .pipe(prefix("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
     .pipe(gulp.dest('./stylesheets/'))
-    <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %>
-    <% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
+    <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %><% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
 });
 
 // Reload Task
 gulp.task('reload', function () {
   gulp.src('views/**/*.html')
-    <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %>
-    <% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
+    <% if (reload == "browsersync") { %>.pipe(browserSync.reload({stream:true}));<% } %><% if (reload == "livereload") { %>.pipe(livereload({auto: false}));<% } %>
 });
 
 // Watch Task
