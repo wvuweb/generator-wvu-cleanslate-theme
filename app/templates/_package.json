@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.8.8",
-    <% if (reload == 'browsersync') { %>"browser-sync": "1.6.0",<% } %>
+    <% if (reload == 'browsersync') { %>"browser-sync": "1.6.1",<% } %>
     <% if (reload == 'livereload') { %>"gulp-livereload": "2.1.0",<% } %>
     "gulp-autoprefixer": "^1.0.1",
     "gulp-front-matter": "^1.0.0",
