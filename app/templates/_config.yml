@@ -1,17 +1,17 @@
-name: <%= themeName %>
-description: <%= themeDescription %>
+name: "<%= themeName %>"
+description: "<%= themeDescription %>"
 
 # CSS
-css: 
-  
+css:
+
   # Turn CSS compression/minification on/off.
   compress: true
-  
+
 # JavaScript options
 js:
-  
+
   # Turn JavaScript compression/minification on/off
   compress: true
-  
+
   # Turn JavaScript mangling on/off.
   mangle: true
