@@ -138,7 +138,7 @@ gulp.task('reload', function () {
 
 // Watch Task
 gulp.task('watch', function () {
-  <% if (reload == ('livereload' || 'browser-sync')) { %>gulp.watch(['**/*.html','**/*.yml'],['reload']);<% } %>
+  <% if (reload == ('livereload' || 'browsersync')) { %>gulp.watch(['**/*.html','**/*.yml'],['reload']);<% } %>
   gulp.watch(['scss/*.scss','scss/**/*.scss'],['sass']);
   gulp.watch(['javascript/**/*.js'],['javascript']);
 });
