@@ -8,15 +8,15 @@ var _s = require('underscore.string');
 module.exports = yeoman.generators.Base.extend({
   constructor: function (options) {
     yeoman.generators.Base.apply(this, arguments);
-    
+
     this.option('test');
     // require package.json
     this.pkg = require('../package.json');
   },
-  
+
   promptTask: function () {
     var done = this.async();
-    
+
     if (!this.options['skip-welcome-message']) {
       this.log(require('yosay')('Yo CleanSlate,         Make me a theme!'));
       this.log(chalk.magenta(
@@ -24,7 +24,7 @@ module.exports = yeoman.generators.Base.extend({
         'structure you need to start coding your theme.'
       ));
     }
-    
+
     var prompts = [{
       type: 'input',
       name: 'theme_name',
@@ -72,8 +72,8 @@ module.exports = yeoman.generators.Base.extend({
       name: 'author_email',
       message: 'What is your WVU email?',
       validate: function(input){
-        if (/\S+@mail.wvu.edu/.test(input)) return true;
-        return "You need to provide a valid WVU email address 'user.name@mail.wvu.edu'"
+        if (/\S+@mail|mix.wvu.edu/.test(input)) return true;
+        return "You need to provide a valid WVU email address 'user.name@mail.wvu.edu' or 'user.name@mix.wvu.edu'"
       }
     }, {
       type: 'checkbox',
@@ -208,29 +208,29 @@ module.exports = yeoman.generators.Base.extend({
         }
 
         done();
-      }.bind(this)); 
+      }.bind(this));
     }
   },
-  
+
   git: function() {
     var done = this.async();
     this.template('gitignore', '.gitignore');
     this.copy('gitattributes','.gitattributes');
     done();
   },
-  
+
   gulp: function(){
     var done = this.async();
     this.template('_gulpfile.js','gulpfile.js');
     done();
   },
-  
+
   npm: function(){
     var done = this.async();
     this.template('_package.json','package.json');
     done();
   },
-  
+
   bower: function(){
     var done = this.async();
     this.template('_bower.json','bower.json');
@@ -242,14 +242,14 @@ module.exports = yeoman.generators.Base.extend({
     this.template('_README.md','README.md');
     done();
   },
-  
+
   theme_config: function(){
     var done = this.async();
     this.template('_config.yml','config.yml');
     this.template('_mock_data.yml','mock_data.yml');
     done();
   },
-  
+
   theme_directories: function(){
     var done = this.async();
     this.mkdir('javascripts');
@@ -267,8 +267,7 @@ module.exports = yeoman.generators.Base.extend({
     this.copy('_frontpage.html','views/frontpage.html');
     done();
   },
-  
-  
+
   install: function () {
     this.on('end', function () {
 
