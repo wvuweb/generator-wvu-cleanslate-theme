@@ -23,7 +23,7 @@ gulp.task('browser-sync', function() {
 // LiveReload Loading Task
 gulp.task('livereload', function(){
   livereload.listen({auto: true});
-})
+});
 <% } %>
 
 // CleanSlate - Copy Views from bower_components to views/
