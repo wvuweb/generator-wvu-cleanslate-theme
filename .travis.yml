@@ -1,11 +1,11 @@
 language: node_js
-
 node_js:
-  - "0.10"
-  - "0.11"
-  
+- '0.10'
+- '0.11'
 before_install:
-  - npm install -g mocha
-
+- npm install -g mocha
 script:
-  - mocha
+- mocha
+notifications:
+  slack:
+    secure: IgSx0tXFRxPpWlM9M4Lsbbj9Z92SUutOEu5EGGRq74ONFlTY6/YbaEVlstwmFC+3VQNKr4HeAL2hAtaVv5s9FzJPJ91fpk4AVo2ZgTxAi84QwuSCwhY+0RyxURr3cXtmhD+TQvlvQdcz2xKz5bj1kw1hS8OBZgySrzAjhsEViEw=
